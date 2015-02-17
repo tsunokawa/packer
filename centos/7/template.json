@@ -1,0 +1,34 @@
+{
+  "builders":[{
+    "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/7.0.1406/isos/x86_64/CentOS-7.0-1406-x86_64-DVD.iso",
+      "iso_checksum": "713ea7847adcdd1700e92429f212721a",
+      "iso_checksum_type": "md5",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "3000s",
+      "vm_name": "CentOS-7.0-1406",
+      "http_directory": "./",
+      "boot_wait": "30s",
+      "boot_command":[
+        "<esc><wait>",
+      "linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg ",
+      "<enter><wait>"
+        ],
+      "shutdown_command": "sudo /sbin/poweroff"
+  }],
+    "provisioners":[{
+      "type": "shell",
+      "scripts": [
+        "base.sh"
+        ]
+    }],
+    "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "./CentOS-7.0.1406-x86_64-ja.box"
+    }
+  ]
+}
+
