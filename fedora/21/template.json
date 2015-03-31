@@ -1,0 +1,34 @@
+{
+  "builders":[{
+    "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "iso_url": "http://download.fedoraproject.org/pub/fedora/linux/releases/21/Server/x86_64/iso/Fedora-Server-DVD-x86_64-21.iso",
+      "iso_checksum": "a6a2e83bb409d6b8ee3072ad07faac0a54d79c9ecbe3a40af91b773e2d843d8e",
+      "iso_checksum_type": "SHA256",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "3000s",
+      "vm_name": "Fedora21",
+      "http_directory": "./",
+      "boot_wait": "30s",
+      "boot_command":[
+        "<esc><wait>",
+      "linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg ",
+      "<enter><wait>"
+        ],
+      "shutdown_command": "sudo /sbin/poweroff"
+  }],
+    "provisioners":[{
+      "type": "shell",
+      "scripts": [
+        "base.sh"
+        ]
+    }],
+    "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "./Fedora21-x86_64-ja.box"
+    }
+  ]
+}
+
