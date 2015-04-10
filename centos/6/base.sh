@@ -2,7 +2,7 @@
 sudo sed -i "s/^.*requiretty/#Defaults requiretty/" /etc/sudoers
 sudo sed -i "s/#UseDNS yes/UseDNS no/" /etc/ssh/sshd_config
 
-cat <<EOM | sudo tee -a /etc/yum.repos.d/epel.repo
+cat <<"EOM" | sudo tee /etc/yum.repos.d/epel.repo
 [epel]
 name=epel
 baseurl=http://download.fedoraproject.org/pub/epel/6/\$basearch
