@@ -16,7 +16,8 @@
       "linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg ",
       "<enter><wait>"
         ],
-      "shutdown_command": "sudo /sbin/poweroff"
+      "shutdown_command": "sudo /sbin/poweroff",
+      "ssh_pty" : "true"
   }],
     "provisioners":[{
       "type": "shell",
