@@ -2,13 +2,13 @@
   "builders":[{
     "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
-      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/7.0.1406/isos/x86_64/CentOS-7.0-1406-x86_64-DVD.iso",
-      "iso_checksum": "713ea7847adcdd1700e92429f212721a",
+      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/7.2.1511/isos/x86_64/CentOS-7-x86_64-DVD-1511.iso",
+      "iso_checksum": "c875b0f1dabda14f00a3e261d241f63e",
       "iso_checksum_type": "md5",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_wait_timeout": "3000s",
-      "vm_name": "CentOS-7.0-1406",
+      "vm_name": "CentOS-7.2.1511",
       "http_directory": "./",
       "boot_wait": "30s",
       "boot_command":[
@@ -28,7 +28,7 @@
     "post-processors": [
     {
       "type": "vagrant",
-      "output": "./CentOS-7.0.1406-x86_64-ja.box"
+      "output": "./CentOS-7.2.1511-x86_64-ja.box"
     }
   ]
 }
