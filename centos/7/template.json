@@ -2,13 +2,13 @@
   "builders":[{
     "type": "virtualbox-iso",
       "guest_os_type": "RedHat_64",
-      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/7.2.1511/isos/x86_64/CentOS-7-x86_64-DVD-1511.iso",
-      "iso_checksum": "c875b0f1dabda14f00a3e261d241f63e",
-      "iso_checksum_type": "md5",
+      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/7.3.1611/isos/x86_64/CentOS-7-x86_64-DVD-1611.iso",
+      "iso_checksum": "c455ee948e872ad2194bdddd39045b83634e8613249182b88f549bb2319d97eb",
+      "iso_checksum_type": "sha256",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_wait_timeout": "3000s",
-      "vm_name": "CentOS-7.2.1511",
+      "vm_name": "CentOS-7.3.1611",
       "http_directory": "./",
       "boot_wait": "30s",
       "boot_command":[
@@ -16,7 +16,7 @@
       "linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg ",
       "<enter><wait>"
         ],
-      "shutdown_command": "sudo /sbin/poweroff",
+      "shutdown_command": "sudo shutdown -P now",
       "ssh_pty" : "true"
   }],
     "provisioners":[{
@@ -28,7 +28,7 @@
     "post-processors": [
     {
       "type": "vagrant",
-      "output": "./CentOS-7.2.1511-x86_64-ja.box"
+      "output": "./CentOS-7.3.1611-x86_64-ja.box"
     }
   ]
 }
