@@ -27,7 +27,7 @@ sudo mount -o loop /home/vagrant/VBoxGuestAdditions.iso /mnt
 sudo sh /mnt/VBoxLinuxAdditions.run
 sudo umount /mnt
 
-sudo /etc/rc.d/init.d/vboxadd setup
+sudo /sbin/rcvboxadd setup
 
 # オムニバスインストーラーを利用したChefのインストール
 curl -L https://www.opscode.com/chef/install.sh | sudo bash
