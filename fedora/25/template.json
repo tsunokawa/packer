@@ -1,0 +1,48 @@
+{
+  "builders":[{
+    "type": "virtualbox-iso",
+      "guest_os_type": "RedHat_64",
+      "iso_url": "http://ftp.jaist.ac.jp/pub/Linux/Fedora/releases/25/Server/x86_64/iso/Fedora-Server-dvd-x86_64-25-1.3.iso",
+      "iso_checksum": "524bd959dae09ad6fc8e0476ea478700d89f82ec5795d0b1a7b873613f3f26ac",
+      "iso_checksum_type": "SHA256",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "3000s",
+      "vm_name": "Fedora25",
+      "http_directory": "./",
+      "boot_wait": "30s",
+      "vboxmanage": [
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--memory",
+          "1024"
+        ],
+        [
+          "modifyvm",
+          "{{.Name}}",
+          "--cpus",
+          "1"
+        ]
+      ],
+      "boot_command":[
+        "<esc><wait>",
+      "linux ks=http://{{ .HTTPIP }}:{{ .HTTPPort }}/ks.cfg ",
+      "<enter><wait>"
+        ],
+      "shutdown_command": "sudo /sbin/poweroff"
+  }],
+    "provisioners":[{
+      "type": "shell",
+      "scripts": [
+        "base.sh"
+        ]
+    }],
+    "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "./Fedora25-x86_64-ja.box"
+    }
+  ]
+}
+

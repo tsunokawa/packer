@@ -1,0 +1,43 @@
+{
+  "builders": [
+    {
+      "type": "virtualbox-iso",
+      "guest_os_type": "Ubuntu_64",
+      "iso_urls": [
+        "http://ftp.jaist.ac.jp/pub/Linux/ubuntu-releases/yakkety/ubuntu-16.10-server-amd64.iso",
+        "http://releases.ubuntu.com/16.10/ubuntu-16.10-server-amd64.iso?_ga=1.77711063.2145922053.1488274557"
+      ],
+      "iso_checksum": "7d6de832aee348bacc894f0a2ab1170d",
+      "iso_checksum_type": "md5",
+      "ssh_username": "vagrant",
+      "ssh_password": "vagrant",
+      "ssh_wait_timeout": "60m",
+      "shutdown_command": "echo 'vagrant' | sudo -S shutdown -P now",
+      "headless": false,
+      "http_directory": "./",
+      "boot_command": [
+        "<esc><esc><enter><wait>",
+        "/install/vmlinuz noapic ",
+        "preseed/url=http://{{ .HTTPIP }}:{{ .HTTPPort }}/preseed.cfg ",
+        "debian-installer=en_US auto locale=en_US kbd-chooser/method=us ",
+        "hostname={{ .Name }} ",
+        "fb=false debconf/frontend=noninteractive ",
+        "keyboard-configuration/modelcode=SKIP keyboard-configuration/layout=USA ",
+        "keyboard-configuration/variant=USA console-setup/ask_detect=false ",
+        "initrd=/install/initrd.gz -- <enter>"
+      ]
+    }
+  ],
+  "provisioners": [
+    {
+      "type": "shell",
+      "script": "base.sh"
+    }
+  ],
+  "post-processors": [
+    {
+      "type": "vagrant",
+      "output": "ubuntu-16.10-server.box"
+    }
+  ]
+}
