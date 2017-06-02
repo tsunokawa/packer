@@ -1,7 +1,7 @@
 {
   "builders": [
     {
-      "name": "ubuntu1704",
+      "name": "ubuntu",
       "type": "virtualbox-iso",
       "guest_os_type": "Ubuntu_64",
       "iso_urls": [
