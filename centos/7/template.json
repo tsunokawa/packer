@@ -1,14 +1,15 @@
 {
   "builders":[{
     "type": "virtualbox-iso",
+    "hard_drive_interface": "sata",
       "guest_os_type": "RedHat_64",
-      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/7.3.1611/isos/x86_64/CentOS-7-x86_64-DVD-1611.iso",
-      "iso_checksum": "c455ee948e872ad2194bdddd39045b83634e8613249182b88f549bb2319d97eb",
+      "iso_url": "http://ftp.iij.ad.jp/pub/linux/centos/7.6.1810/isos/x86_64/CentOS-7-x86_64-DVD-1810.iso",
+      "iso_checksum": "6d44331cc4f6c506c7bbe9feb8468fad6c51a88ca1393ca6b8b486ea04bec3c1",
       "iso_checksum_type": "sha256",
       "ssh_username": "vagrant",
       "ssh_password": "vagrant",
       "ssh_wait_timeout": "3000s",
-      "vm_name": "CentOS-7.3.1611",
+      "vm_name": "CentOS-7.6.1810",
       "http_directory": "./",
       "boot_wait": "30s",
       "boot_command":[
@@ -28,7 +29,7 @@
     "post-processors": [
     {
       "type": "vagrant",
-      "output": "./CentOS-7.3.1611-x86_64-ja.box"
+      "output": "./CentOS-7.6.1810-x86_64-ja.box"
     }
   ]
 }
